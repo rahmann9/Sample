@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WealthGuardian - Profile</title>
+  <link rel="stylesheet" href="../css/dashboard-styles.css">
+</head>
+<body>
+<header>
+  <h1>Profile Settings</h1>
+  <nav>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="transaction.html">Transactions</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="profile-update-form">
+    <h2>Update Your Profile</h2>
+    <form id="profileForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">New Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="notifications">Enable Notifications:</label>
+        <input type="checkbox" id="notifications" name="notifications">
+      </div>
+
+      <button type="button" onclick="updateProfile()">Update Profile</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2023 WealthGuardian. All rights reserved.</p>
+</footer>
+
+<script>
+
+  function updateProfile() {
+    // Gather form data
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var notifications = document.getElementById('notifications').checked;
+
+    // Validate email using regex
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Simulate API call or data storage (in real scenario, this would be an AJAX request to a server)
+    var profileData = {
+      email: email,
+      password: password,
+      notifications: notifications
+    };
+
+    // Example: Store profile data in localStorage
+    localStorage.setItem('profileData', JSON.stringify(profileData));
+
+    alert('Profile updated successfully!');
+  }
+
+
+</script>
+</body>
+</html>
